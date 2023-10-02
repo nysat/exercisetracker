@@ -25,6 +25,12 @@ body{
     background:rgba(163, 163, 163, 0.2);
     color:#fff;
     border:0;
+    transition: ease 0.2s, background 0.2s, color 0.2s;
+  }
+
+  .box input:hover{
+    background: #bb89cf;
+    color: white;
   }
   .box input:focus,.box input:active,.box button:focus,.box button:active{
     outline:none;
@@ -60,4 +66,8 @@ body{
   .box p span{
     cursor:pointer;
     color:#666;
+    transition: ease 0.2s, color 0.2s;
+  }
+  .box p span:hover{
+    color: #bb89cf;
   }
