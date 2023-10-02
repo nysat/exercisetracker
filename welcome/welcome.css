@@ -1,47 +1,63 @@
-.card-container{
-    margin-top: 10%;
-    /* margin-bottom: 10%; */
-    margin-left: 30%;
-    margin-right: 30%;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    transition: 0.3s;
-    text-align: center;
-}
+body{
+    padding:0;
+    margin:0;
+  }
+  .box{
+    position:absolute;
+    height:100%;
+    width:100%;
+    font-family:Helvetica;
+    color:#fff;
+    background:rgba(0,0,0,0.13);
+    padding:30px 0px;
+  }
+  .box h1{
+    text-align:center;
+    margin:30px 0;
+    font-size:30px;
+  }
+  .box input{
+    display:block;
+    border-radius: 6px;
+    width:300px;
+    margin:20px auto;
+    padding:15px;
+    background:rgba(163, 163, 163, 0.2);
+    color:#fff;
+    border:0;
+  }
+  .box input:focus,.box input:active,.box button:focus,.box button:active{
+    outline:none;
+  }
+  button{
+    background:darkgray;
+    box-shadow: 0 0 0 black;
+    border:0;
+    border-radius: 3px;
+    color:#fff;
+    padding:10px;
+    font-size:20px;
+    width:330px;
+    margin:20px auto;
+    display:block;
+    cursor:pointer;
+    transition: ease 0.2s, background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
 
-.inputs{
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-}
 
-input{
-    margin-bottom: 10px;
-    height: 30px;
-    border-radius: 8px;
-    border: 1px solid lightgray;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    padding: 5px;
-}
-button{
-    width: 35%;
-    padding: 8px 14px;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 70px;
-    font-size: large;
-    transition: ease 0.2s, transform 0.2s, background-color 0.2s, color 0.2s, box-shadow 0.2s;
-}
-
-button:hover{
-    background-color: #fff;
-    color: #000;
-    border: 1px solid black;
-    box-shadow: 8px 8px 0 black;
+  button:hover{
     transform: translate(-3px, -3px);
-    cursor: pointer;
-}
+    background-color: white;
+    box-shadow: 5px 5px 0 black;
+    border: 1px solid black;
+    color: black;
+  }
+  .box p{
+    font-size:14px;
+    text-align:center;
+    font-weight: bold;
+  }
+  .box p span{
+    cursor:pointer;
+    color:#666;
+  }
