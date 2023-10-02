@@ -1,2 +1,3 @@
 # exercisetracker
-log workouts to track and display them in different ways
+Log workouts and track your progress by viewing your data in a useful and interactive way.
+Measure progress across different movements and easily review previous workouts.
