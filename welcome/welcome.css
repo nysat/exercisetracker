@@ -34,7 +34,7 @@ body{
     box-shadow: 0 0 0 black;
     border:0;
     border-radius: 3px;
-    color:#fff;
+    color:black;
     padding:10px;
     font-size:20px;
     width:330px;
@@ -47,10 +47,10 @@ body{
 
   button:hover{
     transform: translate(-3px, -3px);
-    background-color: white;
+    background-color: #9B59B6;
     box-shadow: 5px 5px 0 black;
     border: 1px solid black;
-    color: black;
+    color: white;
   }
   .box p{
     font-size:14px;
