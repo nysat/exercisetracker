@@ -1,6 +1,5 @@
-
-
 // New Workout Page
+// grabbing the input values from the form
 function logExercise() {
     let exercise = document.getElementById("exercise").value;
     let sets = document.getElementById("sets").value;
