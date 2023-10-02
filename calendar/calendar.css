@@ -24,7 +24,7 @@ body{
   display: flex;
   align-items: center;
   padding: 25px 30px 10px;
-  justify-content: space-between;
+  justify-content: space-between; 
 }
 header .icons{
   display: flex;

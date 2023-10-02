@@ -40,7 +40,7 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
             currYear = date.getFullYear(); // updating current year with new date year
             currMonth = date.getMonth(); // updating current month with new date month
         } else {
-            date = new Date(); // pass the current date as date value
+            date = new Date(); // pass the current date as date value 
         }
         renderCalendar(); // calling renderCalendar function
     });
