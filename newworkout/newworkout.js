@@ -5,5 +5,15 @@ function logExercise() {
     let sets = document.getElementById("sets").value;
     let reps = document.getElementById("reps").value;
     let weight = document.getElementById("weight").value;
-    console.log(`Exercise: ${exercise} Sets: ${sets} Reps: ${reps} Weight: ${weight}`)
+    let rpe = document.getElementById("rpe").value;
+    let comments = document.getElementById("comments").value;
+    console.log(
+        `Exercise: ${exercise}
+         Sets: ${sets}
+         Reps: ${reps}
+         Weight: ${weight}
+         RPE: ${rpe}
+         Comments: ${comments}`
+         )
 }
+
