@@ -17,8 +17,18 @@ Core functionality
 Home Page:
 - house navigation to My Exercises and My Calenar pages
 - display logged info from most recent Workout (date of most recent workout)
+- contain link button to New Workout Page
+
+New Workout Page:
+- Dropdown to select a workout
+- Fields to enter:
+- Sets (number)
+- Reps (number)
+- Weight (number)
+- RPE (rate of percieved exertion) (number 1-10)
+- Current Body Weight (number)
+- Comments (text)
+
+My Calendar Page
+- Displays an interactive calendar where each day takes user to the workout logged on the chosen day (bonus feature have days that have logged actitivies be indicated in some way)
 - 
-
-
-Define RPE in user friendly way
-
