@@ -7,3 +7,5 @@ const app = express();  // create express app
 const connection = mysql.createConnection({
     
 });
+
+console.log('test')
