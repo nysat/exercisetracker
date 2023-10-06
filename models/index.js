@@ -1,3 +1,5 @@
+
+
 // create relationships between the tables
 // foreign key and primary key connections
 // userid will be on every exercise
