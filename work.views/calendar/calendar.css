@@ -14,6 +14,41 @@ body{
   min-height: 100vh;
   background: #9B59B6;
 }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;padding: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #ffffff;
+  position: fixed;
+  top: 0px;
+  justify-content: space-between;
+}
+
+.nav-links{
+  padding: 28px 30px;
+ 
+}
+.nav-links li{
+   display: inline-block;
+   margin: 0 15px;
+}
+.nav-links li a{
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  color: #54b3d6;
+  margin: 0 -.25rem;
+  padding: 0 .25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.nav-links li a:hover{
+    box-shadow: inset 2000px 0 0 0 #54b3d6;
+    color: white;
+    transition-duration: 1.5s;
+  
+}
+
 .wrapper{
   width: 450px;
   background: #fff;
