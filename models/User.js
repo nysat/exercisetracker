@@ -23,7 +23,7 @@ User.init({
     },
     email: {
         type: DataTypes.STRING,
-        allowNull:false,
+        allowNull:true,     //remember to change this to false this is just for testing
         unique: true,
         validate: {
             isEmail: true,
@@ -31,7 +31,7 @@ User.init({
     },
     password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true, //remember to change this to false this is just for testing
         validate: {
             len: [8],
         },
