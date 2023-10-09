@@ -64,3 +64,13 @@ connection.connect((err) => {
     }
     console.log('Connected to the database as id ' + connection.threadId);
 });
+
+$(document).ready(function() {
+  $('calander').fullCalender({
+    header: {
+        left: 'prev, next today',
+        center: 'title',
+        right: 'month, agendaWeek, agendaDay'
+    }
+  })  
+})
