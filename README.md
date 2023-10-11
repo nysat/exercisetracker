@@ -5,7 +5,7 @@ Measure progress across different movements and easily review previous workouts.
 Terminology:
 
 Exercise - A specific movement performed in a group of sets of reps with a weight included, catalogued by date
-Workout - A group of workouts logged on a specific date
+Workout - A group of exercises logged on a specific date
 
 Core functionality
 - User Login 
