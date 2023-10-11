@@ -2,7 +2,7 @@
 // http://localhost:3001/api/users you can see the path to test them in the folder structure 
 //we are in routes/api/users.js and look at the link above..
 const router = require('express').Router();
-const {User} = require('../../models');
+const {User} = require('../../models/User');
 
 //this .post is to create a new user
 router.post('/', async (req, res) => {

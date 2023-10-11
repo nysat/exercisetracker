@@ -10,9 +10,15 @@ const { Model, DataTypes } = require('sequelize');
 class Exercise extends Model { } //this is something you have to refer to the documentation for to know what it does
                                 //and how you are able to use the "model" and "datatypes" that sequelize gives you
 Exercise.init({
+    id: {// id
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+    },  
     title: {// exercise name
         type: DataTypes.STRING,   //this is where you define the data type for each column in the table
-        allowNull: false,
+        allowNull: true,
     },
     date: {// date
         type: DataTypes.DATE,
@@ -37,6 +43,13 @@ Exercise.init({
     comments: {// comments - ex "felt tired"
         type: DataTypes.STRING,
         allowNull: true,
+    },
+    user_id: {// user id foreign key to build association with the user that created the exercise or is logged in 
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id',
+        },
     },
     },
     {//In this second object literal youre going to define any configuration for the table and make a connection to the database

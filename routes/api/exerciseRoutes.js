@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { Exercise } = require('../../models');
+const { Exercise } = require('../../models/Exercise');
 
-//import the model from exercise.js
+
 
 module.exports = router;
