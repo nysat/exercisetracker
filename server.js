@@ -11,7 +11,7 @@ const routes = require('./routes'); // import routes
 const {User} = require('./models'); 
 
 const app = express();  // create express app   
-const PORT = process.env.PORT || 4001; // set port to what we have in the .env file or 3001
+const PORT = process.env.PORT || 3001; // set port to what we have in the .env file or 3001
 //middleware 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
