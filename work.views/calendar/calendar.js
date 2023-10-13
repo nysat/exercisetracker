@@ -85,15 +85,9 @@ function display_events() {
 $.ajax({
     url: '',
     dataType: 'json',
-    success: function (response) {
-        events.push({
-            event_id: result[i].event_id,
-            title: result[i].title,
-            start: result[i].start,
-            end: result[i].end,
-            url: result[i].url
+    success: function (response){
 
-        });
+
     }
 })
 }
