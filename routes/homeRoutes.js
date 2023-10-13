@@ -5,6 +5,7 @@ const withAuth = (`../utils/auth`);
 router.get('/', function (req, res) {
     res.render('newWorkout',);
   });
+  
 //serialize data for handlebars so it can read it
 
 

@@ -1,13 +1,12 @@
 const {Model, DataTypes} = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-
-//remember to require bcrypt
 //remember that "model" and "datatypes" are from sequelize its a package that sequelize lets usq use
 class User extends Model {
-    checkPassword(loginPw) {
-        return bcrypt.compareSync(loginPw, this.password);
-    }
+    checkPassword(loginPw) { //loginPw is the password that the user enters the plain text 
+        return bcrypt.compareSync(loginPw, this.password); //this.password is the hashed password in the database
+    } //bcrypt.compareSync is a method that compares the plain text password to the hashed password in the database
+    //this is getting invoked in the routes/api/userRoutes.js file line 30 
 }
 
 User.init({
@@ -39,14 +38,15 @@ User.init({
     },
     {
         hooks: {
-            beforeCreate: async (newUserData) => {
+            beforeCreate: async (newUserData) => { //this is to hash the password before it is created
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData
             },
-            beforeUpdate: async (updatedUserData) => {
+            beforeUpdate: async (updatedUserData) => { //this is to hash the password before it is updated
                 updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
                 return updatedUserData
-            },
+            },//theses hooks are taking the password and hashing it before it is created or updated literally right before the code hits 
+            //the .create or .update methods in the roues/api/userRoutes.js file
         },
         sequelize,
         timestamps: false, //this is to prevent it from creating the createdAt and updatedAt columns (extra tables in the database)

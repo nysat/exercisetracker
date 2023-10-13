@@ -2,7 +2,37 @@
 // http://localhost:3001/api/users you can see the path to test them in the folder structure 
 //we are in routes/api/users.js and look at the link above..
 const router = require('express').Router();
-const User = require('../../models/User');
+const { User, Exercise } = require('../../models');
+const bcrypt = require('bcrypt');
+
+//gets all users
+router.get('/', async(req,res)=>{
+    try{
+        const userData = await User.findAll({
+            include: [{model: Exercise}] //this is to include the exercises that the user has created
+        });
+        res.status(200).json(userData);
+    } catch(err){
+        res.status(500).json({err: err.message});
+    }
+});
+
+//gets one user
+router.get('/:id', async(req,res)=>{
+    try{
+        const userData = await User.findByPk(req.params.id, {
+            include: [{model: Exercise}] //this is to tie in the exercises that the user has created
+        });
+        if(!userData){
+            res.status(404).json({message: 'No user found with this id!'});
+            return;
+        }
+        res.status(200).json(userData);
+    } catch(err){
+        res.status(500).json(err);
+    }
+})
+
 
 //this .post is to create a new user
 router.post('/', async (req, res) => {
@@ -14,18 +44,20 @@ router.post('/', async (req, res) => {
         });
        res.status(200).json(userData);
     } catch (err) {
-        res.status(400).json({err: err.message});
+        res.status(400).json(err);
     }
 });
+
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.findOne({where: {email: req.body.email}});
-        if (!userData) {
+        const userData = await User.findOne({where: {email: req.body.email}}); //searches database for email that matches the user logging in 
+        if (!userData) { //if the email does not exist in the database it will return this message
             res.status(400).json({message: 'Incorrect email or password, please try again'});
             return;
         }
-        const validPassword = await userData.checkPassword(req.body.password);
-        if (!validPassword) {
+        //if user exists in the database then it will check the password
+        const validPassword = await userData.checkPassword(req.body.password); //this is taking from the instance method in the user model
+        if (!validPassword) { //if the password is incorrect it will return this message
             res.status(400).json({message: 'Incorrect email or password, please try again'});
             return;
         }
@@ -38,6 +70,7 @@ router.post('/login', async (req, res) => {
         res.status(400).json(err);
     }
 });
+
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
@@ -47,13 +80,19 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
-
-router.get('/', async(req,res)=>{
-    try{
-        const userData = await User.findAll();
-        res.setMaxListeners(200).json(userData);
-    } catch(err){
-        res.status(500).json({err: err.message});
+//deletes user
+router.delete('/:id', async (req,res)=>{
+    try {
+    const deleteResult = await User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    res.json({message: 'User was deleted',deleteResult})     
+    } catch (err) {
+        res.status(500).json(err);
+        
     }
-})
+});
+
 module.exports = router;
