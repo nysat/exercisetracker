@@ -5,10 +5,12 @@ const mysql = require('mysql2'); // import mysql
 const Sequelize = require('sequelize'); // import sequelize package
 const hbs = exhbs.create();
 const sequelize = require('./config/connection');//Import connection object for sequelize
-const routes = require('./routes'); // import routes
+const routes = require('./routes/api/userRoutes'); // import routes
+const routesExercise = require('./routes/api/exerciseRoutes'); // import routes...//ylcbranch
 const path = require('path');
 //Import Models to sync them with the database
 const {User} = require('./models'); 
+const {Exercise} = require('./models'); //ylcbranch
 
 
 const app = express();  // create express app   
@@ -23,7 +25,8 @@ app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
 //turn on routes
-app.use(routes);
+app.use('api/users', routes);//ylcbranch
+app.use('api/Exercise', routesExercise);//ylcbranch
 
 app.use(express.static(path.join(__dirname, 'public')));//this is to serve static files like css and js files
 app.use(require('./routes')); // import routes
