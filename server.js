@@ -34,3 +34,6 @@ sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 });
 //the force: false means that we dont want to drop the tables and re-create them if they already exist
+app.get('/', function (req, res) {
+    res.render('index', {});
+  });
