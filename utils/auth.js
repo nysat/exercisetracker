@@ -1,3 +1,10 @@
-//gonna have to add withAuth to the routes that we want to protect
-
-//if user isnt logged in then we have to redirect them to the login page
+//add withAuth to the routes that we want to protect
+const withAuth = (req, res, next) => {// If the user is not logged in, redirect the request to the login route
+    if (!req.session.logged_in) {
+      res.redirect('/login');
+    } else {
+      next();
+    }
+  };
+ 
+  module.exports = withAuth;
