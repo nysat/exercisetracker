@@ -3,8 +3,13 @@ const { User, Exercise } = require('../models');
 
 //this is where we will have the login page     
 router.get('/', function (req, res) {
-    res.render('login', {});
+    res.render('login',);
   });
+
+router.get('/home', function (req, res) {
+    res.render('home',);
+  }
+);
 //serialize data for handlebars so it can read it 
 
 //pass serialized data into a template
