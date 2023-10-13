@@ -112,4 +112,13 @@
               <option value="bodyweightHipThrust">Bodyweight Hip Thrust</option>
             </optgroup>
           </select>
-{{!-- this pulls the last 10 logged instances of the selected exercise --}}
+          
+{{!-- this pulls the last 10 logged instances of the selected exercise from the database --}}
+{{#each loggedInstances}}
+  <div class="logged-instance">
+    <p>Date: {{date}}</p>
+    <p>Weight: {{weight}}</p>
+    <p>Reps: {{reps}}</p>
+    <p>Sets: {{sets}}</p>
+  </div>
+{{/each}}
