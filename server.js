@@ -26,7 +26,7 @@ app.set('views', __dirname + '/views');
 
 //turn on routes
 app.use('api/users', routes);//ylcbranch
-app.use('api/Exercuse', routesExercise);//ylcbranch
+app.use('api/Exercise', routesExercise);//ylcbranch
 
 app.use(express.static(path.join(__dirname, 'public')));//this is to serve static files like css and js files
 app.use(require('./routes')); // import routes
