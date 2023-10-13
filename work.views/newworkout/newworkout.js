@@ -6,6 +6,8 @@ function logExercise() {
     const rpe = document.getElementById("rpe").value;
     const comments = document.getElementById("comments").value;
 
+    // I'm not sure we need to use this validation.  
+
     if (exercise.trim() === "") {
         alert("Please enter an exercise name.");
         return;
@@ -60,3 +62,12 @@ function logExercise() {
         console.error('Error logging exercise:', error);
     });
 }
+
+// fetch('/api/exercises', {
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(data)
+// })
+// .then(response => response.json())
