@@ -3,7 +3,7 @@ const { User, Exercise } = require('../models');
 const withAuth = (`../utils/auth`);
 //this is where we will have the login page    
 router.get('/', function (req, res) {
-    res.render('newWorkout', {});
+    res.render('newWorkout',);
   });
 //serialize data for handlebars so it can read it
 
