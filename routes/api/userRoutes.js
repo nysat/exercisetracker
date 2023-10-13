@@ -2,19 +2,19 @@
 // http://localhost:3001/api/users you can see the path to test them in the folder structure 
 //we are in routes/api/users.js and look at the link above..
 const router = require('express').Router();
-const {User} = require('../../models/User');
+const User = require('../../models/User');
 
 //this .post is to create a new user
 router.post('/', async (req, res) => {
     try {
-        const userData = await User.create(req.body);
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-            res.status(200).json(userData);
+        const userData = await User.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password //ylcbranch
         });
+       res.status(200).json(userData);
     } catch (err) {
-        res.status(400).json(err);
+        res.status(400).json({err: err.message});
     }
 });
 router.post('/login', async (req, res) => {
@@ -47,4 +47,13 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
+
+router.get('/', async(req,res)=>{
+    try{
+        const userData = await User.findAll();
+        res.setMaxListeners(200).json(userData);
+    } catch(err){
+        res.status(500).json({err: err.message});
+    }
+})
 module.exports = router;
