@@ -2,7 +2,9 @@ const router = require('express').Router();
 const { User, Exercise } = require('../models');
 
 //this is where we will have the login page     
-
+app.get('/', function (req, res) {
+    res.render('index', {});
+  });
 //serialize data for handlebars so it can read it 
 
 //pass serialized data into a template
