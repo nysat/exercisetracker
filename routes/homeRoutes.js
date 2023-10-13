@@ -3,7 +3,7 @@ const { User, Exercise } = require('../models');
 
 //this is where we will have the login page     
 app.get('/', function (req, res) {
-    res.render('index', {});
+    res.render('login', {});
   });
 //serialize data for handlebars so it can read it 
 
