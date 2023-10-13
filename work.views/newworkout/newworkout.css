@@ -1,109 +1,47 @@
-/* add BG image if we want one 
 body {
-    background-image: url("path/to/image.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-    */
-
-/* Style the select element */
-
-/* header section */
-
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;padding: 20px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #ffffff;
-  position: fixed;
-  top: 0px;
-  justify-content: space-between;
+  background-color: #8a8484;
 }
 
-.nav-links{
-  padding: 28px 30px;
- 
-}
-.nav-links li{
-   display: inline-block;
-   margin: 0 15px;
-}
-.nav-links li a{
-  box-shadow: inset 0 0 0 0 #54b3d6;
-  color: #54b3d6;
-  margin: 0 -.25rem;
-  padding: 0 .25rem;
-  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+.container {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.nav-links li a:hover{
-    box-shadow: inset 2000px 0 0 0 #54b3d6;
-    color: white;
-    transition-duration: 1.5s;
-
-  
+.form-group {
+  text-align: center;
 }
 
-h1 {
-    text-align: center;
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #fff;
 }
+
+input[type="number"],
+textarea,
 select {
-    width: 50%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-  }
-  
-  /* Style the option elements */
-  option {
-    padding: 12px 20px;
-    background-color: #f1f1f1;
-    color: black;
-  }
-  
-  /* Style the selected option */
-  option:checked {
-    background-color: #4CAF50;
-    color: white;
-  }
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #444;
+  color: #fff;
+}
 
-  /* Style the form element */
-form {
-    width: 50%;
-    margin: 0 auto;
-  }
-  
-  /* Style the label elements */
-  label {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  /* Style the input elements */
-  input[type="number"] {
-    width: 10%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-  }
-  
-  /* Style the button element */
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  /* Style the button element on hover */
-  button:hover {
-    background-color: #45a049;
-  }
+button {
+  display: block;
+  margin: 0 auto;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0069d9;
+}

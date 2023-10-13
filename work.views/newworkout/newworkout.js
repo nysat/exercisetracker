@@ -6,6 +6,8 @@ function logExercise() {
     const rpe = document.getElementById("rpe").value;
     const comments = document.getElementById("comments").value;
 
+    // I'm not sure we need to use this validation.  
+
     if (exercise.trim() === "") {
         alert("Please enter an exercise name.");
         return;
