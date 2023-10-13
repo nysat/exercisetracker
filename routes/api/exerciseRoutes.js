@@ -4,7 +4,20 @@ const { Exercise, User } = require('../../models');
 //get all exercises
 router.get('/', async (req, res) => {
     try {
-        const exerciseData = await Exercise.findAll();
+        const exerciseData = await Exercise.findAll({
+            include: [{ model: User }] //this is to include the user that created the exercise
+        });
+        res.status(200).json(exerciseData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+//get one exercise
+router.get('/:id', async (req, res) => {
+    try {
+        const exerciseData = await Exercise.findByPk(req.params.id, {
+            include: [{ model: User }] //this is to include the user that created the exercise
+        });
         res.status(200).json(exerciseData);
     } catch (err) {
         res.status(500).json(err);
@@ -51,7 +64,7 @@ router.delete('/:id', async (req,res)=>{
             id: req.params.id
         }
     })
-    res.json(deleteResult)     
+    res.json({message: 'exercise deleted',deleteResult})     
     } catch (err) {
         res.status(500).json(err);
         

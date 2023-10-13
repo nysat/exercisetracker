@@ -17,6 +17,22 @@ router.get('/', async(req,res)=>{
     }
 });
 
+//gets one user
+router.get('/:id', async(req,res)=>{
+    try{
+        const userData = await User.findByPk(req.params.id, {
+            include: [{model: Exercise}] //this is to tie in the exercises that the user has created
+        });
+        if(!userData){
+            res.status(404).json({message: 'No user found with this id!'});
+            return;
+        }
+        res.status(200).json(userData);
+    } catch(err){
+        res.status(500).json(err);
+    }
+})
+
 
 //this .post is to create a new user
 router.post('/', async (req, res) => {
@@ -64,7 +80,7 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
-
+//deletes user
 router.delete('/:id', async (req,res)=>{
     try {
     const deleteResult = await User.destroy({
@@ -72,7 +88,7 @@ router.delete('/:id', async (req,res)=>{
             id: req.params.id
         }
     })
-    res.json(deleteResult)     
+    res.json({message: 'User was deleted',deleteResult})     
     } catch (err) {
         res.status(500).json(err);
         
