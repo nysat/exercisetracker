@@ -81,13 +81,24 @@ $(document).ready(function() {
 
 function display_events() {
     const events = new Array();
-
 $.ajax({
     url: '',
     dataType: 'json',
-    success: function (response){
+    success: function (response) {
 
+    const result = response.data;
+    $.each(result, function (i, item) {
+        events.push({
+            event_id: result[i].event_id,
+            title: result[i].title,
+            sets: result[i].sets,
+            reps: result[i].reps,
+            weight: result[i].weight,
+            url: result[i].url
 
+        });
+    })
+    
     }
 })
 }
