@@ -1,6 +1,17 @@
 const router = require('express').Router();
-const Exercise = require('../../models/Exercise');
+const { Exercise, User } = require('../../models');
 
+//get all exercises
+router.get('/', async (req, res) => {
+    try {
+        const exerciseData = await Exercise.findAll();
+        res.status(200).json(exerciseData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+//create new exercise
 router.post('/', async (req,res)=>{
     try{
         const exerciseData = await Exercise.create({
@@ -19,15 +30,7 @@ router.post('/', async (req,res)=>{
     }
 })
 
-router.get('/', async (req, res) => {
-    try {
-        const exerciseData = await Exercise.findAll();
-        res.status(200).json(exerciseData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
+//update exercise
 router.put('/:id', async (req, res) => {
     try {
         const exerciseData = await Exercise.update(req.body, {
@@ -38,6 +41,20 @@ router.put('/:id', async (req, res) => {
         res.status(200).json(exerciseData);
     } catch (err) {
         res.status(500).json(err);
+    }
+});
+//delete exercise
+router.delete('/:id', async (req,res)=>{
+    try {
+    const deleteResult = await Exercise.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    res.json(deleteResult)     
+    } catch (err) {
+        res.status(500).json(err);
+        
     }
 });
 module.exports = router;
