@@ -2,22 +2,24 @@ const router = require('express').Router();
 const { Exercise } = require('../../models/Exercise');
 
 router.get('/', async (req, res) => {
-    Exercise.findAll().then((exerciseData) => {
-        res.json(exerciseData);
+    try {
+        const exerciseData = await Exercise.findAll();
+        res.status(200).json(exerciseData);
+    } catch (err) {
+        res.status(500).json(err);
     }
-    ).catch((err) => {
-        res.json(err);
-    }); 
 });
 
 router.put('/:id', async (req, res) => {
-    Exercise.update(req.body, {
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(updatedExercise => {
-        res.json(updatedExercise)}
-        )
+    try {
+        const exerciseData = await Exercise.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        });
+        res.status(200).json(exerciseData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 module.exports = router;

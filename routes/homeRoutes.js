@@ -2,7 +2,9 @@ const router = require('express').Router();
 const { User, Exercise } = require('../models');
 
 //this is where we will have the login page     
-
+app.get('/', function (req, res) {
+    res.render('login', {});
+  });
 //serialize data for handlebars so it can read it 
 
 //pass serialized data into a template
@@ -11,3 +13,6 @@ const { User, Exercise } = require('../models');
 
 //if  the user is already logged in we can redirect them to the home page or direct them to a different route 
 
+
+
+module.exports = router;
