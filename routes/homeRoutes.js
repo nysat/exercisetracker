@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { User, Exercise } = require('../models');
 const withAuth = (`../utils/auth`);
-<<<<<<< HEAD
 
 router.get('/', async(req,res)=>{
   res.render('login');
@@ -19,11 +18,6 @@ router.get('/home',withAuth, async(req,res)=>{
   } catch (err) {
     res.status(500).json(err);
     }                       
-=======
-//this is where we will have the login page    
-router.get('/', function (req, res) {
-    res.render('newWorkout',);
->>>>>>> 35cb20f067eb8f6a809ef95687e5e19119deb220
   });
 
 
