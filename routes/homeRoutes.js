@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Exercise } = require('../models');
-const withAuth = (`../utils/auth`);
+const withAuth = require(`../utils/auth`); //ylcbranch -- added 'require' for withAuth to resolve error
 
 router.get('/', async(req,res)=>{
   res.render('login');

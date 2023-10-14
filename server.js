@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3001; // set port to what we have in the .env f
 const sess = {
     secret: process.env.SECRET,
     resave: false,
-    saveUnitialized: true,
+    saveUninitialized: false,
 }
 
 app.use(session(sess));

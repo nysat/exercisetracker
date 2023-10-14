@@ -35,7 +35,7 @@ router.post('/', async (req,res)=>{
             weight: req.body.weight,
             bodyweight: req.body.bodyweight,
             comments: req.body.comments,
-            user_id: req.body.user_id //ylcbranch
+            user_id: req.body.user_id //ylcbranch - updated exercise routes
         });
         res.status(200).json(exerciseData);
     }catch(err){
