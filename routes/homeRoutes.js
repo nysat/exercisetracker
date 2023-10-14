@@ -13,7 +13,7 @@ router.get('/home',withAuth, async(req,res)=>{
     const userData = await Exercise.findAll({
       include: [{model: User}]
     });
-    const exercises = userData.map((exercise) => exercise.get({ plain: true }));
+    const exercises = userData.map((exercise) => exercise.get({ plain: true }));//this is returning an array of plain json objects for each exercise
     res.render('homepage', { exercises });
   } catch (err) {
     res.status(500).json(err);
