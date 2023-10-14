@@ -57,19 +57,19 @@ router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({where: {email: req.body.email}}); //searches database for email that matches the user logging in 
         if (!userData) { //if the email does not exist in the database it will return this message
-            res.status(400).json({message: 'Incorrect email or password, please try again'});
+            res.status(404).json({message: 'Incorrect email, please try again'});
             return;
         }
         //if user exists in the database then it will check the password
         const validPassword = await userData.checkPassword(req.body.password); //this is taking from the instance method in the user model
         if (!validPassword) { //if the password is incorrect it will return this message
-            res.status(400).json({message: 'Incorrect email or password, please try again'});
+            res.status(400).json({message: 'Incorrect password, please try again'});
             return;
         }
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
-            res.json({user: userData, message: 'You are now logged in!'});
+            res.json({user: userData, message: 'You are logged in!'});
         });
     } catch (err) {
         res.status(400).json(err);
