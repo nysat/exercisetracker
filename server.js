@@ -1,13 +1,13 @@
 require('dotenv').config(); // import dotenv package
 const express = require('express'); // import express]
 const exhbs = require('express-handlebars'); // import handlebars
-const hbs = exhbs.create({});
 const Sequelize = require('sequelize'); // import sequelize package
 const sequelize = require('./config/connection');//Import connection object for sequelize
 const path = require('path');
 const session = require('express-session'); // import express-session
 const withAuth = require('./utils/auth'); // import auth middleware
-
+const helpers = require('./utils/helpers'); // import helpers
+const hbs = exhbs.create({helpers});
 //Import Models to sync them with the database
 const {User} = require('./models'); 
 const {Exercise} = require('./models'); //ylcbranch
