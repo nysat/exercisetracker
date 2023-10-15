@@ -5,8 +5,8 @@ const Sequelize = require('sequelize'); // import sequelize package
 const hbs = exhbs.create({});
 const sequelize = require('./config/connection');//Import connection object for sequelize
 const path = require('path');
-const session = require('express-session'); // import express-session
-const withAuth = require('./utils/auth'); // import auth middleware
+//const session = require('express-session'); // import express-session
+//const withAuth = require('./utils/auth'); // import auth middleware
 
 //Import Models to sync them with the database
 const {User} = require('./models'); 
@@ -23,7 +23,7 @@ const sess = {
     saveUninitialized: false,
 }
 
-app.use(session(sess));
+//app.use(session(sess));
 
 //middleware 
 app.use(express.json());
@@ -34,10 +34,11 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars'); 
 app.set('views', __dirname + '/views');
 
-app.use(express.static(path.join(__dirname, 'public')));//this is to serve static files like css and js files//this is only
+// app.use(express.static(path.join(__dirname, 'public')));//this is to serve static files like css and js files//this is only
 //going to work if we have apublic folder in the root directory with the css files we need which we should do to maintain the mvc structure
 
-app.use(withAuth); // use auth middleware
+//app.use(withAuth); // use auth middleware
+app.use(express.static(path.join(__dirname, 'public'))); //this is to serve static files like css and js files//this is only
 app.use(require('./routes')); // import routes
 
 // create connection to database
