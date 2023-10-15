@@ -5,7 +5,7 @@ const Sequelize = require('sequelize'); // import sequelize package
 const sequelize = require('./config/connection');//Import connection object for sequelize
 const path = require('path');
 const session = require('express-session'); // import express-session
-const withAuth = require('./utils/auth'); // import auth middleware
+// const withAuth = require('./utils/auth'); // import auth middleware
 const helpers = require('./utils/helpers'); // import helpers
 const hbs = exhbs.create({helpers});
 //Import Models to sync them with the database
@@ -38,7 +38,7 @@ app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
 
-app.use(withAuth); // use auth middleware
+// app.use(withAuth); // use auth middleware
 app.use(require('./routes')); // import routes
 
 // create connection to database

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Exercise } = require('../models');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 
 router.get('/', async(req,res)=>{
   res.render('login');
@@ -8,13 +8,13 @@ router.get('/', async(req,res)=>{
 
 
 //this is where we will have the home page once a user is logged in 
-router.get('/home', withAuth, async(req,res)=>{
+router.get('/home', /*withAuth,*/ async(req,res)=>{
   try {
     const userData = await Exercise.findAll({
       include: [{model: User}]
     });
     const exercises = userData.map((exercise) => exercise.get({ plain: true }));//this is returning an array of plain json objects for each exercise
-    res.render('homepage', { exercises });
+    res.render('home', { exercises });
   } catch (err) {
     res.status(500).json(err);
     }                       
