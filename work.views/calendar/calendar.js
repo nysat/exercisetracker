@@ -1,104 +1,258 @@
-const daysTag = document.querySelector(".days"),
-currentDate = document.querySelector(".current-date"),
-prevNextIcon = document.querySelectorAll(".icons span");
-// getting new date, current year and month
-let date = new Date(),
-currYear = date.getFullYear(),
-currMonth = date.getMonth();
-// storing full name of all months in array
-const months = ["January", "February", "March", "April", "May", "June", "July",
-              "August", "September", "October", "November", "December"];
-const renderCalendar = () => {
-    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
-    lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
-    lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
-    lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
-    let liTag = "";
-    for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
-        liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
-    }
-    for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
-        // adding active class to li if the current day, month, and year matched
-        let isToday = i === date.getDate() && currMonth === new Date().getMonth() 
-                     && currYear === new Date().getFullYear() ? "active" : "";
-        liTag += `<li class="${isToday}">${i}</li>`;
-    }
-    for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
-        liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
-    }
-    currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
-    daysTag.innerHTML = liTag;
-}
-renderCalendar();
-prevNextIcon.forEach(icon => { // getting prev and next icons
-    icon.addEventListener("click", () => { // adding click event on both icons
-        // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
-        currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
-        if(currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
-            // creating a new date of current year & month and pass it as date value
-            date = new Date(currYear, currMonth, new Date().getDate());
-            currYear = date.getFullYear(); // updating current year with new date year
-            currMonth = date.getMonth(); // updating current month with new date month
-        } else {
-            date = new Date(); // pass the current date as date value 
-        }
-        renderCalendar(); // calling renderCalendar function
-    });
-});
+class WorkoutTracker {
+    static LOCAL_STORAGE_DATA_KEY = "workout-tracker-entries";
 
+    constructor(root) {
+        this.root = root;
+        this.root.insertAdjacentHTML("afterbegin", home.handlebars());
+        this.entries = [];
 
-const mysql = require('mysql');
+        this.loadEntries();
+        this.updateView();
 
-const connection = mysql.createConnection({
-    host: 'your-hostname',
-    port: 'your-port',
-    user: 'your-username',
-    password: 'your-password',
-    database: 'your-database-name'
-});
+        this.root.querySelector(".tracker__add").addEventListener("click", () => {
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = (date.getMonth() + 1).toString().padStart(2, "0");
+            const day = date.getDay().toString().padStart(2, "0");
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to database: ' + err.stack);
-        return;
-    }
-    console.log('Connected to the database as id ' + connection.threadId);
-});
-
-$(document).ready(function() {
-  $('calander').fullCalender({
-    header: {
-        left: 'prev, next today',
-        center: 'title',
-        right: 'month, agendaWeek, agendaDay'
-    }
-  })  
-})
-
-$(document).ready(function() {
-    display_events();
-});
-
-function display_events() {
-    const events = new Array();
-$.ajax({
-    url: '',
-    dataType: 'json',
-    success: function (response) {
-
-    const result = response.data;
-    $.each(result, function (i, item) {
-        events.push({
-            event_id: result[i].event_id,
-            title: result[i].title,
-            sets: result[i].sets,
-            reps: result[i].reps,
-            weight: result[i].weight,
-            url: result[i].url
-
+            this.addEntry({
+                date: `${ year }-${ month }-${ day }`,
+                workout: "walking",
+                duration: 30
+            });
         });
-    })
-    
     }
-})
+
+    static html() {
+        return `
+        <table class="tracker">
+        <thread>
+          <tr>
+            <th>Date</th>
+            <th>workout</th>
+            <th>weight</th>
+            <th>reps</th>
+            <th>sets</th>
+            <th></th>
+          </tr>
+        </thread>
+        <tbody class="tracker__entries">
+              <tr class="tracker__row"></tr>
+    
+          <tr>
+            <td>
+              <input type="date" class="tracker__date">
+            </td>
+             <td>
+              <select class="tracker__workout">
+                 <option value="benchPress">Bench Press</option>
+                  <option value="squats">Squat</option>
+                  <option value="deadlift">Deadlift</option>
+                  <option value="overHeadPress">Overhead Press</option>
+                  <option value="barbellRow">Row</option>
+                  <option value="hipThrust">Hip Thrust</option>
+                  <option value="snatch">Snatch</option>
+                  <option value="cleanAndJerk">Clean and Jerk</option>
+                  <option value="dbPress">DB Press</option>
+                  <option value="dbLunge">DB Lunge</option>
+                  <option value="dbRow">DB Row</option>
+                  <option value="dbCurl">DB Curl</option>
+                  <option value="bulgarianSquat">Bulgarian Squat</option>
+                  <option value="dbFly">DB Fly</option>
+                  <option value="lateralRaise">Lateral Raise</option>
+                  <option value="legPress">Leg Press</option>
+                  <option value="legCurl">Leg Curl</option>
+                  <option value="legExtension">Leg Extension</option>
+                  <option value="hackSquat">Hack Squat</option>
+                  <option value="machineRow">Machine Row</option>
+                  <option value="machinePress">Machine Press</option>
+                  <option value="machineShoulderPress">Machine Shoulder Press</option>
+                  <option value="smithSquat">Smith Machine Squat</option>
+                   <option value="singleArmPulldown">Single Arm Pulldown</option>
+                  <option value="singleArmRow">Single Arm Row</option>
+                  <option value="cablePulldown">Cable Pulldown</option>
+                  <option value="cableRow">Cable Row</option>
+                  <option value="cableFly">Cable Fly</option>
+                  <option value="cableLateralDeltoidRaise">Cable Lateral Deltoid Raise</option>
+                  <option value="cableTricepExtension">Cable Tricep Extension</option>
+                  <option value="cableTricepSkullcrusher">Cable Tricep Skullcrusher</option>
+                  <option value="pushUp">Push Up</option>
+                  <option value="pullUp">Pull Up</option>
+                  <option value="chinUp">Chin Up</option>
+                  <option value="dip">Dip</option>
+                  <option value="bodyweightSquat">Bodyweight Squat</option>
+                  <option value="bodyweightLunge">Bodyweight Lunge</option>
+                  <option value="bodyweightRow">Bodyweight Row</option>
+                  <option value="bodyweightHipThrust">Bodyweight Hip Thrust</option>
+            </td>
+                  <td>
+              <input type="number" class="tracker__sets">
+              <span class="tracker__text">sets</span>
+            </td>
+                  <td>
+              <input type="number" class="tracker__reps">
+               <span class="tracker__text">reps</span>
+            </td>
+                  <td>
+              <input type="number" class="tracker__weight">
+               <span class="tracker__text">weight</span>
+            </td>
+                  <td>
+              <input type="type" class="tracker__comments">
+               <span class="tracker__text">comments</span>
+            </td>
+             <td>
+              <button type="button" class="tracker__button">&times;</button>
+             </td>
+          </tr>
+        </tbody>
+        <tr class="tracker__row tracker__row--add">
+          <td colspan="6">
+            <button class="tracker__add">Add Entry &plus;</button>
+          </td>
+        </tr>
+        </tbody>t
+      </table>
+        `;
+    }
+
+    static rowHtml() {
+        return `
+            <tr class="tracker__row">
+                <td>
+                    <input type="date" class="tracker__date">
+                </td>
+                <td>
+                    <select class="tracker__workout">
+                    <option value="benchPress">Bench Press</option>
+                    <option value="squats">Squat</option>
+                    <option value="deadlift">Deadlift</option>
+                    <option value="overHeadPress">Overhead Press</option>
+                    <option value="barbellRow">Row</option>
+                    <option value="hipThrust">Hip Thrust</option>
+                    <option value="snatch">Snatch</option>
+                    <option value="cleanAndJerk">Clean and Jerk</option>
+                    <option value="dbPress">DB Press</option>
+                    <option value="dbLunge">DB Lunge</option>
+                    <option value="dbRow">DB Row</option>
+                    <option value="dbCurl">DB Curl</option>
+                    <option value="bulgarianSquat">Bulgarian Squat</option>
+                    <option value="dbFly">DB Fly</option>
+                    <option value="lateralRaise">Lateral Raise</option>
+                    <option value="legPress">Leg Press</option>
+                    <option value="legCurl">Leg Curl</option>
+                    <option value="legExtension">Leg Extension</option>
+                    <option value="hackSquat">Hack Squat</option>
+                    <option value="machineRow">Machine Row</option>
+                    <option value="machinePress">Machine Press</option>
+                    <option value="machineShoulderPress">Machine Shoulder Press</option>
+                    <option value="smithSquat">Smith Machine Squat</option>
+                     <option value="singleArmPulldown">Single Arm Pulldown</option>
+                    <option value="singleArmRow">Single Arm Row</option>
+                    <option value="cablePulldown">Cable Pulldown</option>
+                    <option value="cableRow">Cable Row</option>
+                    <option value="cableFly">Cable Fly</option>
+                    <option value="cableLateralDeltoidRaise">Cable Lateral Deltoid Raise</option>
+                    <option value="cableTricepExtension">Cable Tricep Extension</option>
+                    <option value="cableTricepSkullcrusher">Cable Tricep Skullcrusher</option>
+                    <option value="pushUp">Push Up</option>
+                    <option value="pullUp">Pull Up</option>
+                    <option value="chinUp">Chin Up</option>
+                    <option value="dip">Dip</option>
+                    <option value="bodyweightSquat">Bodyweight Squat</option>
+                    <option value="bodyweightLunge">Bodyweight Lunge</option>
+                    <option value="bodyweightRow">Bodyweight Row</option>
+                    <option value="bodyweightHipThrust">Bodyweight Hip Thrust</option>
+                </td>
+                <td>
+                    <input type="number" class="tracker__sets">
+                    <span class="tracker__text"></span>
+                </td>
+                <td>
+                    <button type="button" class="tracker__button tracker__delete">&times;</button>
+                </td>
+            </tr>
+        `;
+    }
+    // will need to replace with databse pull
+    loadEntries() {
+        this.entries = JSON.parse(localStorage.getItem("workout-tracker-entries") || "[]");
+    }
+    // same as ^^
+    saveEntries() {
+        localStorage.setItem("workout-tracker-entries", JSON.stringify(this.entries));
+    }
+
+    updateView() {
+        const tableBody = this.root.querySelector(".tracker__entries");
+        const addRow = data => {
+            const template = document.createElement("template");
+            let row = null;
+
+            template.innerHTML = WorkoutTracker.rowHtml().trim();
+            row = template.content.firstElementChild;
+
+            row.querySelector(".tracker__date").value = data.date;
+            row.querySelector(".tracker__workout").value = data.workout;
+            row.querySelector(".tracker__weight").value = data.weight;
+            row.querySelector(".tracker__reps").value = data.reps;
+            row.querySelector(".tracker__sets").value = data.sets;
+
+  row.querySelector(".tracker__date").addEventListener("change", ({ target }) => {
+                data.date = target.value;
+                this.saveEntries();
+            });
+
+            row.querySelector(".tracker__workout").addEventListener("change", ({ target }) => {
+                data.workout = target.value;
+                this.saveEntries();
+            });
+
+            row.querySelector(".tracker__weight").addEventListener("change", ({ target }) => {
+                data.duration = target.value;
+                this.saveEntries();
+            });
+            row.querySelector(".tracker__reps").addEventListener("change", ({ target }) => {
+                data.duration = target.value;
+                this.saveEntries();
+            });
+            row.querySelector(".tracker__sets").addEventListener("change", ({ target }) => {
+                data.duration = target.value;
+                this.saveEntries();
+            });
+
+
+            row.querySelector(".tracker__delete").addEventListener("click", () => {
+                this.deleteEntry(data);
+            });
+
+            tableBody.appendChild(row);
+        };
+
+        tableBody.querySelectorAll(".tracker__row").forEach(row => {
+            row.remove();
+        });
+
+        this.entries.forEach(data => addRow(data));
+    }
+
+    addEntry(data) {
+        this.entries.push(data);
+        this.saveEntries();
+        this.updateView();
+    }
+
+    deleteEntry(dataToDelete) {
+        this.entries = this.entries.filter(data => data !== dataToDelete);
+        this.saveEntries();
+        this.updateView();
+    }
 }
+
+const app = document.getElementById("history");
+
+const wt = new WorkoutTracker(history);
+
+window.wt = wt;
+
+          

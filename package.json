@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/interaction": "^6.1.9",
     "bcrypt": "^4.0.1",
     "connect-session-sequelize": "^7.1.7",
     "dotenv": "^16.3.1",
