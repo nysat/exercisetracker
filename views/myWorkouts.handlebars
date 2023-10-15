@@ -1,8 +1,6 @@
 {{!--
-
  THIS PAGE WILL DISPLAY THE TABLE OF WORKOUTS THAT THE USER HAS CREATED
  IT WILL DISPLAY IN DESCENDING ORDER BY DATE
- 
 --}}
 
 
@@ -62,7 +60,8 @@
           </select>
         </div>
 
-{{!-- this is the table that will display the workouts in the format of date - weight sets reps that pulls from the database --}}<table class="table">
+{{!-- this is the table that will display the workouts in the format of date - weight sets reps that pulls from the database --}}
+<table class="table">
     <thead>
         <tr>
             <th>Date</th>
@@ -77,9 +76,10 @@
             <tr>
                 <td>{{date}}</td>
                 <td>{{exercise}}</td>
-                <td>{{weight}}</td>
                 <td>{{sets}}</td>
                 <td>{{reps}}</td>
+                <td>{{weight}}</td>
+                
             </tr>
         {{/each}}
     </tbody>
