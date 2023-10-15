@@ -8,17 +8,17 @@ router.get('/', async(req,res)=>{
 
 
 //this is where we will have the home page once a user is logged in 
-// router.get('/home', withAuth, async(req, res) =>{
-//   try {
-//     const userData = await Exercise.findAll({
-//       include: [{model: User}]
-//     });
-//     const exercises = userData.map((exercise) => exercise.get({ plain: true }));
-//     res.render('homepage', { exercises });
-//   } catch (err) {
-//     res.status(500).json(err);
-//     }                       
-//   });
+router.get('/home',withAuth, async(req,res)=>{
+  try {
+    const userData = await Exercise.findAll({
+      include: [{model: User}]
+    });
+    const exercises = userData.map((exercise) => exercise.get({ plain: true }));//this is returning an array of plain json objects for each exercise
+    res.render('homepage', { exercises });
+  } catch (err) {
+    res.status(500).json(err);
+    }                       
+  });
 
 
 

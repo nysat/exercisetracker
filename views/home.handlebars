@@ -5,58 +5,111 @@
       <head>
     <meta charset="utf-8">
     <title>Calander</title>
-    <link rel="stylesheet" href="/work.views/calendar/calendar.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Font Link for Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="/work.views/calendar/calendar.css">
     <script src="/work.views/calendar/calendar.js" defer></script>
   </head>
-  <body>
-    <header>
-      <div class="header">
-        <h1>Exercise History</h1>
-        <!--navigation links from header to articles-->
-            <div>       
-             <ul class="nav-links">
-                <li>
-                    <a href="/work.views/welcome/welcome.html">Home</a>
-                </li>
-                <li>
-                  <a href="/work.views/newworkout/newworkout.html">New Exercise / New Workout</a>
-              </li>
-                
-            </div>
-    </header>
-    <div class="wrapper">
-      <header>
-        <p class="current-date"></p>
-        <div class="icons">
-          <span id="prev" class="material-symbols-rounded">chevron_left</span>
-          <span id="next" class="material-symbols-rounded">chevron_right</span>
-        </div>
-      </header>
-      <div class="calendar"> 
-        <ul class="weeks">
-          <li>Sun</li>
-          <li>Mon</li>
-          <li>Tue</li>
-          <li>Wed</li>
-          <li>Thu</li>
-          <li>Fri</li>
-          <li>Sat</li>
-        </ul>
-        <ul class="days"></ul>
-      </div>
-    </div>
+<body>
 
+{{!-- this is for previous list, revamped css and js connected as well at same place as calendar was --}}
+<div id="history">
+  {{!-- test injection to js --}}
+  {{!-- <table class="tracker">
+    <thread>
+      <tr>
+        <th>Date</th>
+        <th>workout</th>
+        <th>weight</th>
+        <th>reps</th>
+        <th>sets</th>
+        <th></th>
+      </tr>
+    </thread>
+    <tbody class="tracker__entries">
+          <tr class="tracker__row"></tr>
 
+      <tr>
+        <td>
+          <input type="date" class="tracker__date">
+        </td>
+         <td>
+          <select class="tracker__workout">
+             <option value="benchPress">Bench Press</option>
+              <option value="squats">Squat</option>
+              <option value="deadlift">Deadlift</option>
+              <option value="overHeadPress">Overhead Press</option>
+              <option value="barbellRow">Row</option>
+              <option value="hipThrust">Hip Thrust</option>
+              <option value="snatch">Snatch</option>
+              <option value="cleanAndJerk">Clean and Jerk</option>
+              <option value="dbPress">DB Press</option>
+              <option value="dbLunge">DB Lunge</option>
+              <option value="dbRow">DB Row</option>
+              <option value="dbCurl">DB Curl</option>
+              <option value="bulgarianSquat">Bulgarian Squat</option>
+              <option value="dbFly">DB Fly</option>
+              <option value="lateralRaise">Lateral Raise</option>
+              <option value="legPress">Leg Press</option>
+              <option value="legCurl">Leg Curl</option>
+              <option value="legExtension">Leg Extension</option>
+              <option value="hackSquat">Hack Squat</option>
+              <option value="machineRow">Machine Row</option>
+              <option value="machinePress">Machine Press</option>
+              <option value="machineShoulderPress">Machine Shoulder Press</option>
+              <option value="smithSquat">Smith Machine Squat</option>
+               <option value="singleArmPulldown">Single Arm Pulldown</option>
+              <option value="singleArmRow">Single Arm Row</option>
+              <option value="cablePulldown">Cable Pulldown</option>
+              <option value="cableRow">Cable Row</option>
+              <option value="cableFly">Cable Fly</option>
+              <option value="cableLateralDeltoidRaise">Cable Lateral Deltoid Raise</option>
+              <option value="cableTricepExtension">Cable Tricep Extension</option>
+              <option value="cableTricepSkullcrusher">Cable Tricep Skullcrusher</option>
+              <option value="pushUp">Push Up</option>
+              <option value="pullUp">Pull Up</option>
+              <option value="chinUp">Chin Up</option>
+              <option value="dip">Dip</option>
+              <option value="bodyweightSquat">Bodyweight Squat</option>
+              <option value="bodyweightLunge">Bodyweight Lunge</option>
+              <option value="bodyweightRow">Bodyweight Row</option>
+              <option value="bodyweightHipThrust">Bodyweight Hip Thrust</option>
+        </td>
+              <td>
+          <input type="number" class="tracker__sets">
+          <span class="tracker__text">sets</span>
+        </td>
+              <td>
+          <input type="number" class="tracker__reps">
+           <span class="tracker__text">reps</span>
+        </td>
+              <td>
+          <input type="number" class="tracker__weight">
+           <span class="tracker__text">weight</span>
+        </td>
+              <td>
+          <input type="type" class="tracker__comments">
+           <span class="tracker__text">comments</span>
+        </td>
+         <td>
+          <button type="button" class="tracker__button">&times;</button>
+         </td>
+      </tr>
+    </tbody>
+    <tr class="tracker__row tracker__row--add">
+      <td colspan="6">
+        <button class="tracker__add">Add Entry &plus;</button>
+      </td>
+    </tr>
+    </tbody>t
+  </table> --}}
+</div>
     
 
 
 {{!-- my exercises section here --}}
 
 {{!-- this is the dropdown for my exercises --}}
-    <div class="container">
+    {{!-- <div class="container">
       <h1>My Exercises</h1>
       <form>
         <div class="form-group">
@@ -111,7 +164,7 @@
               <option value="bodyweightRow">Bodyweight Row</option>
               <option value="bodyweightHipThrust">Bodyweight Hip Thrust</option>
             </optgroup>
-          </select>
+          </select> --}}
           
 {{!-- this pulls the last 10 logged instances of the selected exercise from the database --}}
 {{#each loggedInstances}}
@@ -122,3 +175,4 @@
     <p>Sets: {{sets}}</p>
   </div>
 {{/each}}
+</body>

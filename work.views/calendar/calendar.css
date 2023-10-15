@@ -1,138 +1,105 @@
-/*ggle fnt to prty*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-body{
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  justify-content: center;
-  min-height: 100vh;
-  background: #9B59B6;
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* organization of main area */
+.tracker {
+  font-size: 14px;
+  border-collapse: collapse;
+  width: 600px;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;padding: 20px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.tracker,
+.tracker * {
+  font-family: sans-serif;
+}
+
+.tracker th {
+  font-size: 1.15em;
+  text-align: left;
+  font-weight: normal;
   color: #ffffff;
-  position: fixed;
-  top: 0px;
-  justify-content: space-between;
+  background: #222;
 }
 
-.nav-links{
-  padding: 28px 30px;
- 
+.tracker th,
+.tracker td {
+  padding: 0.75em;
 }
-.nav-links li{
-   display: inline-block;
-   margin: 0 15px;
-}
-.nav-links li a{
-  box-shadow: inset 0 0 0 0 #54b3d6;
-  color: #54b3d6;
-  margin: 0 -.25rem;
-  padding: 0 .25rem;
-  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+/* diferation of rows */
+.tracker__entries .tracker__row {
+  background: #eeeeee;
 }
 
-.nav-links li a:hover{
-    box-shadow: inset 2000px 0 0 0 #54b3d6;
-    color: white;
-    transition-duration: 1.5s;
-  
+.tracker__entries .tracker__row:nth-child(odd) {
+  background: #dddddd;
 }
-
-.wrapper{
-  width: 450px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+/* numerical/number allignment to side for appearence and organization */
+.tracker__date,
+.tracker__workout,
+.tracker__weight,
+.tracker__reps,
+.tracker__sets {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 1em;
+  height: 2.5em;
+  padding: 0.5em 0;
+  border: none;
+  outline: none;
+  background: none;
 }
-.wrapper header{
+/* cosmetic effects */
+.tracker__weight,
+.tracker__reps,
+.tracker__sets {
+  width: 5em;
+  text-align: right;
+}
+/* button to delete workout */
+.tracker__button {
   display: flex;
   align-items: center;
-  padding: 25px 30px 10px;
-  justify-content: space-between; 
-}
-header .icons{
-  display: flex;
-}
-header .icons span{
-  height: 38px;
-  width: 38px;
-  margin: 0 1px;
-  cursor: pointer;
-  color: #878787;
-  text-align: center;
-  line-height: 38px;
-  font-size: 1.9rem;
-  user-select: none;
+  justify-content: center;
+  background: none;
+  border: none;
   border-radius: 50%;
-}
-.icons span:last-child{
-  margin-right: -10px;
-}
-header .icons span:hover{
-  background: #f2f2f2;
-}
-header .current-date{
-  font-size: 1.45rem;
-  font-weight: 500;
-}
-.calendar{
-  padding: 20px;
-}
-.calendar ul{
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  text-align: center;
-}
-.calendar .days{
-  margin-bottom: 20px;
-}
-.calendar li{
-  color: #333;
-  width: calc(100% / 7);
-  font-size: 1.07rem;
-}
-.calendar .weeks li{
-  font-weight: 500;
-  cursor: default;
-}
-.calendar .days li{
-  z-index: 1;
+  outline: none;
+  color: red;
+  font-size: 1.5em;
+  margin-left: 0.5em;
   cursor: pointer;
-  position: relative;
-  margin-top: 30px;
 }
-.days li.inactive{
-  color: #aaa;
+
+.tracker__button:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
-.days li.active{
-  color: #fff;
+/* add area for workout add */
+.tracker__row--add {
+  border-top: 3px solid #333333;
+  border-bottom: 3px solid #333333;
+  background: #ffffff;
 }
-.days li::before{
-  position: absolute;
-  content: "";
-  left: 50%;
-  top: 50%;
-  height: 40px;
-  width: 40px;
-  z-index: -1;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+
+.tracker__row--add td {
+  text-align: right;
 }
-.days li.active::before{
-  background: #9B59B6;
+
+.tracker__add {
+  display: inline-block;
+  padding: 0.8em 1em;
+  color: green;
+  cursor: pointer;
 }
-.days li:not(.active):hover::before{
-  background: #f2f2f2;
+
+.tracker__add:hover {
+  background:rgba(0, 0, 0, 0.1);
 }
