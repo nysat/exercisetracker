@@ -36,6 +36,10 @@ Exercise.init({
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    rpe: {// rpe
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
     bodyweight: {// body weight
         type: DataTypes.INTEGER,
         allowNull: true,
