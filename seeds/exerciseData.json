@@ -1,0 +1,36 @@
+[
+    {
+        "title": "benchpress",
+        "date": 20231512,
+        "sets": 4,
+        "reps": 10,
+        "weight": 135,
+        "rpe": 10,
+        "bodyweight":  8,
+        "comments": "felt good",
+        "user_id": 1
+    },
+    {
+        "title": "squats",
+        "date": 20231512,
+        "sets": 4,
+        "reps": 15,
+        "weight": 235,
+        "rpe": 10,
+        "bodyweight":  8,
+        "comments": "felt great",
+        "user_id": 2
+    },
+    {
+        "title": "dips",
+        "date": 20231512,
+        "sets": 4,
+        "reps": 10,
+        "weight": 55,
+        "rpe": 10,
+        "bodyweight":  5,
+        "comments": "felt awful",
+        "user_id": 3
+    }
+]
+

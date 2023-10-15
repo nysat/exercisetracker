@@ -1,0 +1,22 @@
+[
+    {
+        "user_id": 1,
+        "name": "Michael Jordan",
+        "email": "mj@gmail.com",
+        "password": "mjthegoat23"
+    },
+    {
+        "user_id": 2,
+        "name": "Stanly Lewis",
+        "email": "stanman@gmail.com",
+        "password": "password"
+    },
+    {
+        "user_id": 3,
+        "name": "Joe Biden",
+        "email": "jb@gmail.com",
+        "password": "1234"
+    }
+]
+    
+
