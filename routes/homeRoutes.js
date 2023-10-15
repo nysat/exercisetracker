@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Exercise } = require('../models');
-const withAuth = (`../utils/auth`);
+const withAuth = require('../utils/auth');
 
 router.get('/', async(req,res)=>{
   res.render('login');
@@ -8,7 +8,7 @@ router.get('/', async(req,res)=>{
 
 
 //this is where we will have the home page once a user is logged in 
-router.get('/home',withAuth, async(req,res)=>{
+router.get('/home', withAuth, async(req,res)=>{
   try {
     const userData = await Exercise.findAll({
       include: [{model: User}]
@@ -30,14 +30,5 @@ router.get('/login', (req, res) => {
 }
 res.render('login'); //otherwise render the login page
 });
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
