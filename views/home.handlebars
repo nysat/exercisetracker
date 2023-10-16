@@ -1,12 +1,12 @@
+{{#each Exercises as |exercise| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
 
-          
-{{!-- this pulls the last 10 logged instances of the selected exercise from the database --}}
-{{#each loggedInstances}}
-  <div class="logged-instance">
-    <p>Date: {{date}}</p>
-    <p>Weight: {{weight}}</p>
-    <p>Reps: {{reps}}</p>
-    <p>Sets: {{sets}}</p>
+    <p>Workout on {{Exercise.date}}</p>
+    
   </div>
+  
+  
+  </div>
+</div>
 {{/each}}
-</body>
