@@ -14,7 +14,7 @@ const loginFormHandler = async(event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/home');
+            document.location.replace('../../views/home.handlebars');
         } else {
             alert(response.statusText);
         }
@@ -36,7 +36,7 @@ const signupFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/home');
+            document.location.replace('../../views/home.handlebars');
         } else {
             alert(response.statusText);
         }
