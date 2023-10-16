@@ -1,16 +1,16 @@
 require('dotenv').config(); // import dotenv package
 const express = require('express'); // import express]
 const exhbs = require('express-handlebars'); // import handlebars
-const Sequelize = require('sequelize'); // import sequelize package
-const sequelize = require('./config/connection');//Import connection object for sequelize
-const path = require('path');
 const session = require('express-session'); // import express-session
+const sequelize = require('./config/connection');//Import connection object for sequelize
+const SequelizeStore = require('connect-session-sequelize')(session.Store); // import sequelize store
+const path = require('path');
 // const withAuth = require('./utils/auth'); // import auth middleware
 const helpers = require('./utils/helpers'); // import helpers
-const hbs = exhbs.create({helpers});
+
 //Import Models to sync them with the database
-const {User} = require('./models'); 
-const {Exercise} = require('./models'); //ylcbranch
+// const {User} = require('./models'); 
+// const {Exercise} = require('./models'); //ylcbranch
 
 // create express app  
 const app = express();   
@@ -21,9 +21,17 @@ const sess = {
     secret: process.env.SECRET,
     resave: false,
     saveUnitialized: true,
+    store: new SequelizeStore({
+        db: sequelize
+    })
 }
 
 app.use(session(sess));
+const hbs = exhbs.create({helpers});
+
+//define these prior to middleware
+app.engine('handlebars', hbs.engine); 
+app.set('view engine', 'handlebars'); 
 
 //middleware 
 app.use(express.json());
@@ -32,13 +40,9 @@ app.use(express.static(path.join(__dirname, 'public')));//this is to serve stati
 //going to work if we have apublic folder in the root directory with the css files we need which we should do to maintain the mvc structure
 
 
-app.engine('handlebars', hbs.engine); 
-app.set('view engine', 'handlebars'); 
-app.set('views', __dirname + '/views');
-
 
 // app.use(withAuth); // use auth middleware
-app.use(require('./routes')); // import routes
+app.use(require('./controllers')); // import routes
 
 
 // create connection to database

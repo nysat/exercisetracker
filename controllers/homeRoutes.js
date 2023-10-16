@@ -3,7 +3,11 @@ const { User, Exercise } = require('../models');
 // const withAuth = require('../utils/auth');
 
 router.get('/', async(req,res)=>{
-  res.render('login');
+  if (req.session.logged_in) { //if user is logged in then redirect to the newWorkout page from handlebars
+    res.redirect('/home');
+    return;
+}
+res.render('login'); //otherwise render the login page
 })
 
 
@@ -20,20 +24,18 @@ router.get('/home', /*withAuth,*/ async(req,res)=>{
     }                       
   });
 
+  // create route for newWorkout
+  router.get('/newWorkout', async(req,res)=>{
+    res.render('newWorkout');
+  })
 
 
-//login route 
-router.get('/login', (req, res) => {
-  if (req.session.logged_in) { //if user is logged in then redirect to the newWorkout page from handlebars
-    res.redirect('/home');
-    return;
-}
-res.render('login'); //otherwise render the login page
-});
 
-router.get('/public/js/login.js', (req, res) => {
-  res.set('Content-Type', 'text/javascript');
-  // Your code to send the JavaScript file
-});
+
+
+// router.get('/public/js/login.js', (req, res) => {
+//   res.set('Content-Type', 'text/javascript');
+//   // Your code to send the JavaScript file
+// });
 
 module.exports = router;

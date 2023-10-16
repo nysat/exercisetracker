@@ -1,20 +1,20 @@
 const loginFormHandler = async(event) => {
-    event.prevemtDefault();
+    event.preventDefault();
 
     const email = document.querySelector
     ('#email-login').value.trim();
     const password = document.querySelector
     ('#password-login').value.trim();
-
     if (email && password) {
-        const response = await fetch('../../routes/api/userRoutes.js', {
+
+        const response = await fetch('/api/users/login', {
             method: 'POST',
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ email: email, password: password }),
             headers: { 'Content-Type': 'application/json'}
         });
 
         if (response.ok) {
-            document.location.replace('../../views/home.handlebars');
+            document.location.replace('/home');
         } else {
             alert(response.statusText);
         }
@@ -29,22 +29,20 @@ const signupFormHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
 
     if (name && email && password) {
-        const response = await fetch('../../routes/api/userRoutes.js', {
+        const response = await fetch('/api/users', {
             method: 'POST',
             body: JSON.stringify({name, email, password}),
             header: { 'Content-Type': 'application/json'},
         });
 
         if (response.ok) {
-            document.location.replace('../../views/home.handlebars');
+            document.location.replace('/home');
         } else {
             alert(response.statusText);
         }
     }
 };
 
-document.querySelector('.login-form')
-document.addEventListener('submit', loginFormHandler);
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 
-document.querySelector('.signup-form')
-document.addEventListener('submit', signupFormHandler)
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler)

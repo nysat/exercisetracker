@@ -1,23 +1,27 @@
+const logExerciseButton = document.querySelector(".logExercise");
+
 function logExercise() {
-    const exercise = document.getElementById("exercise").value;
+    const title = document.getElementById("exercise").value;
     const sets = document.getElementById("sets").value;
     const reps = document.getElementById("reps").value;
     const weight = document.getElementById("weight").value;
     const rpe = document.getElementById("rpe").value;
     const comments = document.getElementById("comments").value;
+    
 
     
 
     const data = {
-        exercise,
+        title,
         sets,
         reps,
         weight,
         rpe,
         comments
     };
+    console.log(data);
 
-    fetch('../../routes/api/exerciseRoutes.js', {
+    fetch('/api/exercises', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -38,3 +42,4 @@ function logExercise() {
     });
 }
 
+logExerciseButton.addEventListener("click", logExercise);

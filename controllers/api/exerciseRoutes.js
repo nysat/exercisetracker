@@ -28,14 +28,8 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req,res)=>{
     try{
         const exerciseData = await Exercise.create({
-            title: req.body.title,
-            date: req.body.date,
-            sets: req.body.sets,
-            reps: req.body.reps,
-            weight: req.body.weight,
-            bodyweight: req.body.bodyweight,
-            comments: req.body.comments,
-            user_id: req.body.user_id //ylcbranch
+            ...req.body,
+            user_id: req.session.user_id //ylcbranch
         });
         res.status(200).json(exerciseData);
     }catch(err){
