@@ -3,7 +3,7 @@ const { User, Exercise } = require('../models');
 // const withAuth = require('../utils/auth');
 
 router.get('/', async(req,res)=>{
-  res.render('login');
+  res.render('newWorkout');
 })
 
 
@@ -25,7 +25,7 @@ router.get('/home', /*withAuth,*/ async(req,res)=>{
 //login route 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) { //if user is logged in then redirect to the newWorkout page from handlebars
-    res.redirect('/newWorkout');
+    res.redirect('/home');
     return;
 }
 res.render('login'); //otherwise render the login page
