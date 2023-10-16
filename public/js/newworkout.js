@@ -17,7 +17,7 @@ function logExercise() {
         comments
     };
 
-    fetch('/api/exercises', {
+    fetch('../../routes/api/exerciseRoutes.js', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
