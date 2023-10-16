@@ -41,6 +41,7 @@ app.set('views', __dirname + '/views');
 // app.use(withAuth); // use auth middleware
 app.use(require('./routes')); // import routes
 
+
 // create connection to database
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));

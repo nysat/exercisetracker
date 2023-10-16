@@ -31,4 +31,9 @@ router.get('/login', (req, res) => {
 res.render('login'); //otherwise render the login page
 });
 
+router.get('/public/js/login.js', (req, res) => {
+  res.set('Content-Type', 'text/javascript');
+  // Your code to send the JavaScript file
+});
+
 module.exports = router;
