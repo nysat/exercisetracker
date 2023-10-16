@@ -3,7 +3,7 @@ const { User, Exercise } = require('../models');
 // const withAuth = require('../utils/auth');
 
 router.get('/', async(req,res)=>{
-  res.render('newWorkout');
+  res.render('login');
 })
 
 
