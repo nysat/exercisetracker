@@ -1,43 +1,173 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
-{{!-- forms for login --}}
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-6">
-    <h2>Signup</h2>
+<h1>EXERCISE<span class="material-symbols-outlined" style="font-size: 54px;">
+fitness_center
+</span><span class="tracker">TRACKER</span></h1>
+<div class="d-flex justify-content-center align-items-center mt-5">
+  
 
-{{!-- form for sign ups --}}
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
+        <div class="card">
+
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item text-center">
+                  <a class="nav-link active btl" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Login</a>
+                </li>
+                <li class="nav-item text-center">
+                  <a class="nav-link btr" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Signup</a>
+                </li>
+               
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                  
+                  <div class="form px-4 pt-5">
+
+                    <input type="text" id="email-login" class="form-control" placeholder="Email or Phone">
+                    <input type="text" id="password-login" class="form-control" placeholder="Password">
+                    <button class="btn btn-outline-success btn-block" id="login-button">Login</button>
+
+                  </div>
+
+
+
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                  
+
+                  <div class="form px-4">
+
+                    <input type="text" id="name-signup" class="form-control" placeholder="Name">
+                    <input type="text" id="email-signup" class="form-control" placeholder="Email">
+                    <input type="text" id="password-signup" class="form-control" placeholder="Password">
+                    <button class="btn btn-outline-success  btn-block" id="signup-button">Signup</button>
+                    
+
+                  </div>
+
+
+
+                </div>
+                
+               </div>
+            
+          
+          
+
+        </div>
+        
+ 
       </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
-  </div>
-</div>
+      <style>
+        /*font-family: 'Bebas Neue', sans-serif;*/
+        body{
+
+  background-color: #000;
+}
+h1{
+  font-family: 'Bebas Neue', sans-serif;
+  text-align: center;
+  font-size: 5em;
+  margin: 40px 0px;
+}
+.tracker{
+  color: #28a745;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+.card{
+
+  width: 400px;
+  border:none;
+
+}
+
+
+.btr{
+
+  border-top-right-radius: 5px !important;
+}
+
+
+.btl{
+
+  border-top-left-radius: 5px !important;
+}
+
+/* Change the background color of the active "Login" tab */
+.btl.active {
+    background-color: #FF5733; /* Replace with your desired color */
+    color: #fff; /* Text color */
+}
+
+/* Change the background color of the active "Signup" tab */
+#pills-home-tab.active {
+    background-color: #8df8a6; 
+    color: black; 
+}
+
+#pills-profile-tab.active {
+    background-color: #8df8a6; 
+    color: black; 
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+
+.btn-dark:hover {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+
+.nav-pills{
+
+  display:table !important;
+  width:100%;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0px;
+        border-bottom: 1px solid #0d6efd40;
+
+}
+
+.nav-item{
+      display: table-cell;
+       background: #0d6efd2e;
+}
+
+
+.form{
+
+  padding: 10px;
+      height: 300px;
+}
+
+.form input{
+
+  margin-bottom: 12px;
+  border-radius: 3px;
+}
+
+
+.form input:focus{
+
+  box-shadow: none;
+}
+
+
+.form button{
+
+  margin-top: 20px;
+}
+      </style>
 
 <script src="/js/login.js"></script>

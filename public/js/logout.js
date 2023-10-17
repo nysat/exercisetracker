@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 
+=======
+// logout.js
+>>>>>>> Stashed changes
 
 const logoutButton = document.getElementById('logout');
 
@@ -10,7 +14,7 @@ logoutButton.addEventListener('click', async () => {
       });
   
       if (response.ok) {
-        window.location.href = '/home';
+        window.location.href = '/api/login';
       } else {
         throw new Error('Failed to logout');
       }

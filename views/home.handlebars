@@ -38,10 +38,17 @@
             <button type="button" class="btn-close" disabled aria-label="Close">DELETE</button>
             </li>
         {{/each}}
-        <script> row.querySelector("button").addEventListener("click", () => {
+        <script> 
+          
+          document.querySelector("button").addEventListener("click", () => {
                 this.deleteEntry(data);
+                const row = document.createElement("tr")
             });
 
             tableBody.appendChild(row);
         ;</script>
     </ul>
+
+    {{!-- {{#if logged_in}} --}}
+  <script src="/js/logout.js"></script>
+  {{!-- {{/if}} --}}
