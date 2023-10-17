@@ -37,13 +37,15 @@ function logExercise() {
         return response.json();
     })
     .then(data => {
-        messageElement.textContent = 'Great job! Now, let\'s get to work!';
+        messageElement.textContent = 'Great start! You can view your workout on the home page';
         messageElement.style.color = 'green';
+        messageElement.style.fontWeight = 'bold';
         console.log('Exercise logged successfully:', data);
     })
     .catch(error => {
         messageElement.textContent = 'Please make sure each field is filled out correctly';
         messageElement.style.color = 'red';
+        messageElement.style.fontWeight = 'bold';
         console.error('Error logging exercise:', error);
     });
 }

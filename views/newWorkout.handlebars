@@ -23,35 +23,57 @@
     </nav>
   </header>
 
-<div class="form-group col-auto mx-auto">
-  <label for="exercise" style="text-align: center; font-family: Arial; font-size: 30px;">Exercise:</label>
-  <input type="text" id="exercise" name="exercise" class="form-control mx-auto" style="width: 50%; text-align: center; font-family: Arial; font-size: 20px;">
-</div>
-<div class="form-group col-auto mx-auto">
-  <label for="sets" style="text-align: center; font-family: Arial; font-size: 30px;">Sets:</label>
-  <input type="number" id="sets" name="sets" class="form-control mx-auto" style="width: 50%; text-align: center; font-family: Arial; font-size: 20px;">
-</div>
-<div class="form-group col-auto mx-auto">
-  <label for="reps" style="text-align: center; font-family: Arial; font-size: 30px;">Reps:</label>
-  <input type="number" id="reps" name="reps" class="form-control mx-auto" style="width: 50%; text-align: center; font-family: Arial; font-size: 20px;">
-</div>
-<div class="form-group col-auto mx-auto">
-  <label for="weight" style="text-align: center; font-family: Arial; font-size: 30px;">Weight:</label>
-  <input type="number" id="weight" name="weight" class="form-control mx-auto" style="width: 50%; text-align: center; font-family: Arial; font-size: 20px;">
-</div>
-<div class="form-group col-auto mx-auto">
-  <label for="rpe" style="text-align: center; font-family: Arial; font-size: 30px;">RPE:</label>
-  <input type="number" id="rpe" name="rpe" class="form-control mx-auto" style="width: 50%; text-align: center; font-family: Arial; font-size: 20px;">
-</div>
-<div class="form-group col-auto mx-auto">
-  <label for="bodyWeight" style="text-align: center; font-family: Arial; font-size: 30px;">Body Weight:</label>
-  <input type="number" id="bodyWeight" name="bodyWeight" class="form-control mx-auto" style="width: 50%; text-align: center; font-family: Arial; font-size: 20px;">
-</div>
-<div class="form-group col-auto mx-auto">
-  <label for="comments" style="text-align: center; font-family: Arial; font-size: 30px;">Comments:</label>
-  <textarea id="comments" name="comments" rows="4" cols="50" class="form-control mx-auto" style="width: 50%; text-align: center; font-family: Arial; font-size: 20px;"></textarea>
-</div>
-<button type="button" class="btn btn-primary mx-auto logExercise">Log Exercise</button>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form class="needs-validation" novalidate>
+        <div class="form-group">
+          <label for="exercise">Exercise</label>
+          <input type="text" class="form-control" id="exercise" required>
+          <div class="invalid-feedback">Please enter the exercise.</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sets">Sets</label>
+            <input type="number" class="form-control" id="sets" required>
+            <div class="invalid-feedback">Please enter the number of sets.</div>
+          </div>
+          <div class="form-group">
+            <label for="reps">Reps</label>
+            <input type="number" class="form-control" id="reps" required>
+            <div class="invalid-feedback">Please enter the number of reps.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="weight">Weight (lbs)</label>
+          <input type="number" class="form-control" id="weight" required>
+          <div class="invalid-feedback">Please enter the weight.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="rpe">RPE (Rate of Perceived Exertion)</label>
+          <input type="number" class="form-control" id="rpe" required>
+          <div class="invalid-feedback">Please enter the RPE.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="bodyWeight">Body Weight (lbs)</label>
+          <input type="number" class="form-control" id="bodyWeight" required>
+          <div class="invalid-feedback">Please enter your body weight.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="comments">Comments</label>
+          <textarea class="form-control mb-3" id="comments" rows="4"></textarea>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block logExercise">Log Exercise</button>
+      </form>
+    </div>
+  </div>
+ 
 
 <div id="message"></div>
 
@@ -66,5 +88,16 @@ h1{
 .tracker{
   color: #28a745; /*color of the word 'tracker' in logo*/
 }
+
+#message{
+  text-align: center;
+  margin-top: 20px;
+}
+label{
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
 </style>
 <script src="/js/newworkout.js"></script>
