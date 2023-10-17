@@ -26,7 +26,14 @@ document.querySelectorAll(".update-workout").forEach((button) => {
             return response.json();
         })
         .then((data) => {
-            
+            // Update the DOM with the new workout data
+            const workoutElement = document.querySelector(`[data-workout-id="${workoutId}"]`);
+            workoutElement.querySelector('.workout-title').textContent = data.title;
+            workoutElement.querySelector('.workout-sets').textContent = data.sets;
+            workoutElement.querySelector('.workout-reps').textContent = data.reps;
+            workoutElement.querySelector('.workout-weight').textContent = data.weight;
+            workoutElement.querySelector('.workout-rpe').textContent = data.rpe;
+            workoutElement.querySelector('.workout-comments').textContent = data.comments;
         })
         .catch((error) => {
             console.error('Error updating workout:', error);
@@ -41,20 +48,26 @@ document.querySelectorAll(".delete-workout").forEach((button) => {
 
         if (confirm("Are you sure you want to delete this workout?")) {
             // Example: Send a delete request
-            fetch(`/api/exercises/${workoutId}`, {
-                method: 'DELETE',
-            })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-            })
-            .catch((error) => {
-                console.error('Error deleting workout:', error);
-            });
+            if (confirm("Are you sure you want to delete this workout?")) {
+                fetch(`/api/exercises/${workoutId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log('Workout deleted successfully');
+                })
+                .catch((error) => {
+                    console.error('Error deleting workout:', error);
+                });
+            }
         }
     });
 });

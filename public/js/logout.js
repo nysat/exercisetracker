@@ -1,5 +1,4 @@
 
-
 async function logout() {
     try {
       const response = await fetch('/api/users/logout', {
@@ -8,7 +7,7 @@ async function logout() {
       });
   
       if (response.ok) {
-        window.location.href = '/api/login'; // Redirect to the login page upon successful logout
+        window.location.href = '/login'; // Redirect to the login page upon successful logout
       } else {
         throw new Error('Failed to logout');
       }
@@ -19,4 +18,3 @@ async function logout() {
   }
   
   document.querySelector('#logout').addEventListener('click', logout);
-  
