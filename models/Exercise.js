@@ -58,7 +58,6 @@ Exercise.init({
     },
     {//In this second object literal youre going to define any configuration for the table and make a connection to the database
         sequelize,
-        // timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'exercise',
