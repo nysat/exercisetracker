@@ -14,8 +14,8 @@ document.querySelectorAll(".update-workout").forEach((button) => {
                 title: 'Updated Title',
                 sets: 5,       // Updated number of sets
                 reps: 10,      // Updated number of reps
-                weight: 50.5,  // Updated weight
-                rpe: 7,        // Updated RPE
+                weight: 50.5,  
+                rpe: 7,        
                 comments: 'Updated comments',
             }),
         })
