@@ -1,7 +1,9 @@
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Exercise Tracker</a>
+        <a class="navbar-brand" href="#"><h1>EXERCISE<span class="material-symbols-outlined" style="font-size: 25px;">
+        fitness_center
+        </span><span class="tracker">TRACKER</span></h1></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -14,6 +16,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/newworkout">New Workout</a>
             </li>
+            <button id="logout">Logout</button>
           </ul>
         </div>
       </div>
@@ -50,4 +53,18 @@
 </div>
 <button type="button" class="btn btn-primary mx-auto logExercise">Log Exercise</button>
 
+<div id="message"></div>
+
+<style>
+  /*navbar bg color = #424549*/
+h1{
+  font-family: 'Bebas Neue', sans-serif;
+  text-align: center;
+  font-size: 1.5em;
+  margin: 5px 0px;
+}
+.tracker{
+  color: #28a745; /*color of the word 'tracker' in logo*/
+}
+</style>
 <script src="/js/newworkout.js"></script>

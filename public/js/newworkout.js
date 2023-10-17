@@ -1,4 +1,5 @@
 const logExerciseButton = document.querySelector(".logExercise");
+const messageElement = document.getElementById("message");
 
 function logExercise() {
     const title = document.getElementById("exercise").value;
@@ -7,7 +8,7 @@ function logExercise() {
     const weight = document.getElementById("weight").value;
     const rpe = document.getElementById("rpe").value;
     const comments = document.getElementById("comments").value;
-    
+
 
     
 
@@ -36,9 +37,13 @@ function logExercise() {
         return response.json();
     })
     .then(data => {
+        messageElement.textContent = 'Great job! Now, let\'s get to work!';
+        messageElement.style.color = 'green';
         console.log('Exercise logged successfully:', data);
     })
     .catch(error => {
+        messageElement.textContent = 'Please make sure each field is filled out correctly';
+        messageElement.style.color = 'red';
         console.error('Error logging exercise:', error);
     });
 }
