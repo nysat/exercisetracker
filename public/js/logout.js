@@ -1,8 +1,6 @@
 
 
-const logoutButton = document.getElementById('logout');
-
-logoutButton.addEventListener('click', async () => {
+async function logout() {
     try {
       const response = await fetch('/api/users/logout', {
         method: 'POST',
@@ -10,7 +8,7 @@ logoutButton.addEventListener('click', async () => {
       });
   
       if (response.ok) {
-        window.location.href = '/api/login';
+        window.location.href = '/api/login'; // Redirect to the login page upon successful logout
       } else {
         throw new Error('Failed to logout');
       }
@@ -18,6 +16,7 @@ logoutButton.addEventListener('click', async () => {
       console.error(err);
       alert('Failed to logout');
     }
-  });
-
-// document.querySelector('#logout').addEventListener('click', logout);
+  }
+  
+  document.querySelector('#logout').addEventListener('click', logout);
+  
