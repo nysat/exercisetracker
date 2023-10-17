@@ -2,10 +2,8 @@ require('dotenv').config(); // import dotenv package
 const express = require('express'); // import express]
 const exhbs = require('express-handlebars'); // import handlebars
 const session = require('express-session'); // import express-session
-const sequelize = require('./config/connection');//Import connection object for sequelize
-const SequelizeStore = require('connect-session-sequelize')(session.Store); // import sequelize store
 const path = require('path');
-// const withAuth = require('./utils/auth'); // import auth middleware
+const withAuth = require('./utils/auth'); // import auth middleware
 const helpers = require('./utils/helpers'); // import helpers
 
 //Import Models to sync them with the database
@@ -16,14 +14,23 @@ const helpers = require('./utils/helpers'); // import helpers
 const app = express();   
 const PORT = process.env.PORT || 3001; // set port to what we have in the .env file or 3001
 
+const sequelize = require('./config/connection');//Import connection object for sequelize
+const SequelizeStore = require('connect-session-sequelize')(session.Store); // import sequelize store
+
 //set up sessions
 const sess = {
     secret: process.env.SECRET,
-    resave: false,
-    saveUnitialized: true,
-    store: new SequelizeStore({
+    cookie: {
+        maxAge: 300000,
+        httpOnly: true,
+        secure: false,
+        sameSite: 'strict',
+      },
+      resave: false,
+      saveUninitialized: true,
+      store: new SequelizeStore({
         db: sequelize
-    })
+      })
 }
 
 app.use(session(sess));
@@ -35,7 +42,7 @@ app.set('view engine', 'handlebars');
 
 //middleware 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));//this is to serve static files like css and js files//this is only
 //going to work if we have apublic folder in the root directory with the css files we need which we should do to maintain the mvc structure
 

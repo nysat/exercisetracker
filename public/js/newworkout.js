@@ -13,6 +13,7 @@ function logExercise() {
 
     const data = {
         title,
+        date: new Date(),
         sets,
         reps,
         weight,

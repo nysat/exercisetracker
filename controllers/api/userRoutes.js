@@ -36,6 +36,7 @@ router.get('/:id', async(req,res)=>{
 
 //this .post is to create a new user
 router.post('/', async (req, res) => {
+    console.log(req.body)
     try {
         const userData = await User.create({
             name: req.body.name,
@@ -45,10 +46,10 @@ router.post('/', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
-            res.status(200).json(userData);
+            res.json(userData);
         })
-       res.status(200).json(userData);
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });
@@ -67,7 +68,7 @@ router.post('/login', async (req, res) => {
             return;
         }
         req.session.save(() => {
-            req.session.user_id = userData.id;
+            req.session.user_id = userData.user_id;
             req.session.logged_in = true;
             res.json({user: userData, message: 'You are logged in!'});
         });

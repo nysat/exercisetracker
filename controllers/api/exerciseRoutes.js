@@ -26,6 +26,7 @@ router.get('/:id', async (req, res) => {
 
 //create new exercise
 router.post('/', async (req,res)=>{
+    console.log(req.session)
     try{
         const exerciseData = await Exercise.create({
             ...req.body,
