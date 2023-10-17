@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 
-=======
-// logout.js
->>>>>>> Stashed changes
 
 const logoutButton = document.getElementById('logout');
 
