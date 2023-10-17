@@ -8,6 +8,7 @@ function logExercise() {
     const weight = document.getElementById("weight").value;
     const rpe = document.getElementById("rpe").value;
     const comments = document.getElementById("comments").value;
+    const bodyweight = document.getElementById("bodyweight").value;
 
 
     
@@ -48,6 +49,17 @@ function logExercise() {
         messageElement.style.fontWeight = 'bold';
         console.error('Error logging exercise:', error);
     });
+    clearFields()
 }
 
+
+clearFields = ()=>{
+    document.getElementById("exercise").value = "";
+    document.getElementById("sets").value = "";
+    document.getElementById("reps").value = "";
+    document.getElementById("weight").value = "";
+    document.getElementById("rpe").value = "";
+    document.getElementById("comments").value = "";
+    document.getElementById("bodyweight").value = "";
+}
 logExerciseButton.addEventListener("click", logExercise);
