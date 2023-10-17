@@ -8,7 +8,7 @@ function logExercise() {
     const weight = document.getElementById("weight").value;
     const rpe = document.getElementById("rpe").value;
     const comments = document.getElementById("comments").value;
-    const bodyweight = document.getElementById("bodyweight").value;
+    const bodyweight = document.getElementById("bodyWeight").value;
 
 
     
@@ -20,6 +20,7 @@ function logExercise() {
         reps,
         weight,
         rpe,
+        bodyweight,
         comments
     };
     console.log(data);
@@ -60,6 +61,6 @@ clearFields = ()=>{
     document.getElementById("weight").value = "";
     document.getElementById("rpe").value = "";
     document.getElementById("comments").value = "";
-    document.getElementById("bodyweight").value = "";
+    document.getElementById("bodyWeight").value = "";
 }
 logExerciseButton.addEventListener("click", logExercise);
