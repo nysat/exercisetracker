@@ -46,7 +46,7 @@ document.querySelectorAll(".delete-workout").forEach((button) => {
     button.addEventListener("click", (event) => {
         const workoutId = event.target.getAttribute("data-workout-id");
 
-        if (confirm("Are you sure you want to delete this workout?")) {
+        
             // Example: Send a delete request
             if (confirm("Are you sure you want to delete this workout?")) {
                 fetch(`/api/exercises/${workoutId}`, {
@@ -69,7 +69,7 @@ document.querySelectorAll(".delete-workout").forEach((button) => {
                     console.error('Error deleting workout:', error);
                 });
             }
-        }
+        
     });
 });
 
