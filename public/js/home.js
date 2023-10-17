@@ -62,7 +62,8 @@ document.querySelectorAll(".delete-workout").forEach((button) => {
                     return response.json();
                 })
                 .then((data) => {
-                    console.log('Workout deleted successfully');
+                    alert('Workout deleted successfully');
+                    removeWorkout(workoutId)
                 })
                 .catch((error) => {
                     console.error('Error deleting workout:', error);
@@ -71,4 +72,10 @@ document.querySelectorAll(".delete-workout").forEach((button) => {
         }
     });
 });
+
+function removeWorkout(workoutId){
+    const workoutBtn = document.querySelector(`[data-workout-id = '${workoutId}']`);
+    console.log(workoutBtn)
+}
+
 

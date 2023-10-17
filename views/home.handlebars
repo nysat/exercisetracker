@@ -16,7 +16,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/newworkout">New Workout</a>
             </li>
-            <button type="button" class="btn btn-outline-light">Logout</button>
+            <button type="button" class="btn btn-outline-light" id="logout">Logout</button>
           </ul>
         </div>
       </div>
@@ -27,7 +27,7 @@
 <div class="container mt-5">
     <div class="row">
         {{#each exercises}}
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 card-container">
             <div class="card bg-dark text-white workout-card">
                 <div class="card-body">
                     <h5 class="card-title">{{title}}</h5>
@@ -78,5 +78,6 @@
     </style>
 
  
-  <script src="\js\home.js"></script>
+  <script src="/js/home.js"></script>
+  <script src="/js/logout.js"></script>
 

@@ -7,7 +7,7 @@ async function logout() {
       });
   
       if (response.ok) {
-        window.location.href = '/login'; // Redirect to the login page upon successful logout
+        window.location.href = '/'; // Redirect to the login page upon successful logout
       } else {
         throw new Error('Failed to logout');
       }
