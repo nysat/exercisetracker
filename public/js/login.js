@@ -52,6 +52,14 @@ const signupFormHandler = async (event) => {
             console.log(response);
         }
     }
+    if(name=== '' || email === '' || password === ''){
+        let signupMsg = document.querySelector('#signupMsg');
+        signupMsg.textContent = 'Please fill out all fields';
+        signupMsg.style.color = 'red';
+    } else if(password.length < 8){
+        const signupMsg = document.querySelector('#signupMsg');
+        signupMsg.textContent = 'Password must be at least 8 characters long';
+    }
 };
 
 // Add event listeners to the login and signup buttons
