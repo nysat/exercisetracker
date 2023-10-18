@@ -18,6 +18,15 @@ const loginFormHandler = async (event) => {
             alert(response.statusText);
         }
     }
+    if(password < 8){
+        let pwMsg = document.querySelector('#pwMsg');
+        pwMsg.textContent = 'Password must be at least 8 characters long';
+        pwMsg.style.color = 'red';
+    } else if(email === ''){
+        let emailMsg = document.querySelector('#pwMsg');
+        emailMsg.textContent = 'Please enter a valid email address';
+        emailMsg.style.color = 'red';
+    }
 };
 
 // Signup form handler
